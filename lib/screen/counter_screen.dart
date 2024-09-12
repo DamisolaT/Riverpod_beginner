@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_beginner/providers/counter_async_notifier_provider.dart';
-import 'package:riverpod_beginner/providers/counter_notifier_provider.dart';
+import 'package:riverpod_beginner/screen/users_screen.dart';
 //import 'package:riverpod_beginner/providers/counter_state_provider.dart';
 
 class CounterScreen extends ConsumerStatefulWidget {
@@ -20,6 +20,7 @@ class _CounterScreenState extends ConsumerState<CounterScreen> {
     //final counter = ref.watch(counterStateProvider);
     //final counter = ref.watch(counterNotifierProvider);
       final counterAsync = ref.watch(counterAsyncNotifierProvider);
+      
     return Scaffold(
       appBar: AppBar(
         title: const  Text("Counter Screen"),
@@ -33,6 +34,15 @@ class _CounterScreenState extends ConsumerState<CounterScreen> {
           ),
           // Text("You have pushed the button this many times:$counter"),
           // Text("$counter",style: Theme.of(context).textTheme.bodyMedium,)
+               FilledButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const UserScreen())
+                    );
+                  },
+                  child: const Text("User"),
+                ),
+
         ],
       ),
       floatingActionButton: Row(
@@ -69,6 +79,8 @@ class _CounterScreenState extends ConsumerState<CounterScreen> {
             tooltip: "Reset",
             child: const Icon(Icons.restore),
             ),
+
+             
         ],
       )
         ,
